@@ -7,8 +7,8 @@
 #SBATCH -c 16
 #SBATCH --mem=0
 #SBATCH -C "haswell"
-#SBATCH -o _clusterRuns/rnaspades/out.%A
-#SBATCH -e _clusterRuns/rnaspades/err.%A
+#SBATCH -o ../_clusterRuns/rnaspades/out.%A
+#SBATCH -e ../_clusterRuns/rnaspades/err.%A
 #SBATCH --mail-type=BEGIN,END,FAIL
 set -e
 
@@ -29,9 +29,9 @@ function finish {
 }
 trap finish EXIT
 
-READSFILE1=input/${DATA_BASE}_mixed_4_2_1_cov50_reads.1.fq
-READSFILE2=input/${DATA_BASE}_mixed_4_2_1_cov50_reads.2.fq
-OUTDIR="benchmark/rnaspades"
+READSFILE1=../input/${DATA_BASE}_mixed_4_2_1_cov50_reads.1.fq
+READSFILE2=../input/${DATA_BASE}_mixed_4_2_1_cov50_reads.2.fq
+OUTDIR="../benchmark/rnaspades"
 mkdir -p ${OUTDIR}
 
 # work locally

@@ -7,8 +7,8 @@
 #SBATCH -c 16
 #SBATCH --mem=0
 ##SBATCH -C "haswell"
-#SBATCH -o _clusterRuns/penguin/out.%A 
-#SBATCH -e _clusterRuns/penguin/err.%A
+#SBATCH -o ../_clusterRuns/penguin/out.%A 
+#SBATCH -e ../_clusterRuns/penguin/err.%A
 #SBATCH --mail-type=BEGIN,END,FAIL
 set -e
 
@@ -31,11 +31,11 @@ function finish {
 }
 trap finish EXIT
 
-READSFILE1=input/${DATA_BASE}_mixed_4_2_1_cov50_reads.1.fq
-READSFILE2=input/${DATA_BASE}_mixed_4_2_1_cov50_reads.2.fq
+READSFILE1=../input/${DATA_BASE}_mixed_4_2_1_cov50_reads.1.fq
+READSFILE2=../input/${DATA_BASE}_mixed_4_2_1_cov50_reads.2.fq
 
 VERSION="plass_${PLASS_VERSION}"
-OUTDIR="benchmark/penguin_${PLASS_VERSION}_clu99/"
+OUTDIR="../benchmark/penguin_${PLASS_VERSION}_clu99/"
 mkdir -p ${OUTDIR}
 
 # work locally

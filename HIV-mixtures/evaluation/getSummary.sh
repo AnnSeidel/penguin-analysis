@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BENCHMARK_DIR="benchmark_cutAndDoubleRef"
+BENCHMARK_DIR="../benchmark_cutAndDoubleRef"
 OUTDIR=${BENCHMARK_DIR}/compare_with_metaviralspades_penguin_clu99/
 mkdir -p ${OUTDIR}
 

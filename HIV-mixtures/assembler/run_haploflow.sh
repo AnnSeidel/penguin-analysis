@@ -7,8 +7,8 @@
 #SBATCH -c 16
 #SBATCH --mem=0
 #SBATCH -C "haswell"
-#SBATCH -o _clusterRuns/haploflow/out.%A.%a 
-#SBATCH -e _clusterRuns/haploflow/err.%A.%a
+#SBATCH -o ../_clusterRuns/haploflow/out.%A.%a 
+#SBATCH -e ../_clusterRuns/haploflow/err.%A.%a
 #SBATCH --array=1-3
 #SBATCH --mail-type=BEGIN,END,FAIL
 set -e
@@ -32,9 +32,9 @@ function finish {
 }
 trap finish EXIT
 
-READSFILE1=input/${DATA_BASE}.cutAndDouble_cov${COV}_reads.1.fq
-READSFILE2=input/${DATA_BASE}.cutAndDouble_cov${COV}_reads.2.fq
-OUTDIR="benchmark_cutAndDoubleRef/haploflow_default/cov${COV}"
+READSFILE1=../input/${DATA_BASE}.cutAndDouble_cov${COV}_reads.1.fq
+READSFILE2=../input/${DATA_BASE}.cutAndDouble_cov${COV}_reads.2.fq
+OUTDIR="../benchmark_cutAndDoubleRef/haploflow_default/cov${COV}"
 mkdir -p ${OUTDIR}
 
 # work locally, haploflow takes single fastq file
@@ -55,4 +55,4 @@ cp ${OUTDIR}/haploflow_out/contigs.fa ${OUTDIR}/${DATA_BASE}_cov${COV}.haploflow
 MIN_CONTIG_LEN=1000
 mkdir -p ${OUTDIR}/mmseqs_eval_cutAndDoubleRef/dbs
 ${SOFTWARE}/MMseqs2/build/src/mmseqs createdb ${OUTDIR}/${DATA_BASE}_cov${COV}.haploflow.contigs.fa ${OUTDIR}/mmseqs_eval_cutAndDoubleRef/dbs/${DATA_BASE}_cov${COV}.haploflow.contigs
-evaluateResultsCutAndDoubleRef.sh ${OUTDIR}/mmseqs_eval_cutAndDoubleRef/dbs/${DATA_BASE}_cov${COV}.haploflow.contigs input/genomes/${DATA_BASE}.cutAndDouble input/genomes/${DATA_BASE}.cutAndDouble ${OUTDIR}/mmseqs_eval_cutAndDoubleRef/ ${MIN_CONTIG_LEN} > ${OUTDIR}/mmseqs_eval_cutAndDoubleRef/mmseqs_eval.log
+../evaluation/evaluateResultsCutAndDoubleRef.sh ${OUTDIR}/mmseqs_eval_cutAndDoubleRef/dbs/${DATA_BASE}_cov${COV}.haploflow.contigs ../input/genomes/${DATA_BASE}.cutAndDouble ../input/genomes/${DATA_BASE}.cutAndDouble ${OUTDIR}/mmseqs_eval_cutAndDoubleRef/ ${MIN_CONTIG_LEN} > ${OUTDIR}/mmseqs_eval_cutAndDoubleRef/mmseqs_eval.log

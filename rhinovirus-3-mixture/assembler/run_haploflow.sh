@@ -7,8 +7,8 @@
 #SBATCH -c 16
 #SBATCH --mem=0
 #SBATCH -C "haswell"
-#SBATCH -o _clusterRuns/haploflow/out.%A 
-#SBATCH -e _clusterRuns/haploflow/err.%A
+#SBATCH -o ../_clusterRuns/haploflow/out.%A 
+#SBATCH -e ../_clusterRuns/haploflow/err.%A
 #SBATCH --mail-type=BEGIN,END,FAIL
 set -e
 
@@ -30,9 +30,9 @@ function finish {
 }
 trap finish EXIT
 
-READSFILE1=input/${DATA_BASE}_mixed_4_2_1_cov50_reads.1.fq
-READSFILE2=input/${DATA_BASE}_mixed_4_2_1_cov50_reads.2.fq
-OUTDIR="benchmark/haploflow_default/"
+READSFILE1=../input/${DATA_BASE}_mixed_4_2_1_cov50_reads.1.fq
+READSFILE2=../input/${DATA_BASE}_mixed_4_2_1_cov50_reads.2.fq
+OUTDIR="../benchmark/haploflow_default/"
 mkdir -p ${OUTDIR}
 
 # work locally, haploflow takes single fastq file

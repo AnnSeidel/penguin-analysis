@@ -7,8 +7,8 @@
 #SBATCH -c 16
 #SBATCH --mem=0
 #SBATCH -C "haswell"
-#SBATCH -o _clusterRuns/vicuna/out.%A.%a 
-#SBATCH -e _clusterRuns/vicuna/err.%A.%a
+#SBATCH -o ../_clusterRuns/vicuna/out.%A.%a 
+#SBATCH -e ../_clusterRuns/vicuna/err.%A.%a
 #SBATCH --array=1-3
 #SBATCH --mail-type=BEGIN,END,FAIL
 set -e
@@ -32,9 +32,9 @@ function finish {
 }
 trap finish EXIT
 
-READSFILE1=input/${DATA_BASE}.cutAndDouble_cov${COV}_reads.1.fq
-READSFILE2=input/${DATA_BASE}.cutAndDouble_cov${COV}_reads.2.fq
-OUTDIR="benchmark_cutAndDoubleRef/vicuna/cov${COV}"
+READSFILE1=../input/${DATA_BASE}.cutAndDouble_cov${COV}_reads.1.fq
+READSFILE2=../input/${DATA_BASE}.cutAndDouble_cov${COV}_reads.2.fq
+OUTDIR="../benchmark_cutAndDoubleRef/vicuna/cov${COV}"
 mkdir -p ${OUTDIR}
 CURRDIR=$(pwd)
 
@@ -60,6 +60,6 @@ cp ${OUTDIR}/vicuna_out/contig.fasta ${OUTDIR}/${DATA_BASE}_cov${COV}.vicuna.con
 MIN_CONTIG_LEN=1000
 mkdir -p ${OUTDIR}/mmseqs_eval_cutAndDoubleRef/dbs
 ${SOFTWARE}/MMseqs2/build/src/mmseqs createdb ${OUTDIR}/${DATA_BASE}_cov${COV}.vicuna.contig.fa ${OUTDIR}/mmseqs_eval_cutAndDoubleRef/dbs/${DATA_BASE}_cov${COV}.vicuna.contig
-evaluateResultsCutAndDoubleRef.sh ${OUTDIR}/mmseqs_eval_cutAndDoubleRef/dbs/${DATA_BASE}_cov${COV}.vicuna.contig input/genomes/${DATA_BASE}.cutAndDouble input/genomes/${DATA_BASE}.cutAndDouble ${OUTDIR}/mmseqs_eval_cutAndDoubleRef/ ${MIN_CONTIG_LEN} > ${OUTDIR}/mmseqs_eval_cutAndDoubleRef/mmseqs_eval.log
+../evaluation/evaluateResultsCutAndDoubleRef.sh ${OUTDIR}/mmseqs_eval_cutAndDoubleRef/dbs/${DATA_BASE}_cov${COV}.vicuna.contig ../input/genomes/${DATA_BASE}.cutAndDouble ../input/genomes/${DATA_BASE}.cutAndDouble ${OUTDIR}/mmseqs_eval_cutAndDoubleRef/ ${MIN_CONTIG_LEN} > ${OUTDIR}/mmseqs_eval_cutAndDoubleRef/mmseqs_eval.log
 
 

@@ -7,8 +7,8 @@
 #SBATCH -c 16
 #SBATCH --mem=0
 ##SBATCH -C "haswell"
-#SBATCH -o _clusterRuns/penguin_clu99/out.%A.%a 
-#SBATCH -e _clusterRuns/penguin_clu99/err.%A.%a
+#SBATCH -o ../_clusterRuns/penguin_clu99/out.%A.%a 
+#SBATCH -e ../_clusterRuns/penguin_clu99/err.%A.%a
 #SBATCH --array=1
 #SBATCH --mail-type=BEGIN,END,FAIL
 set -e
@@ -33,11 +33,11 @@ function finish {
 }
 trap finish EXIT
 
-READSFILE1=input/${DATA_BASE}.cutAndDouble_cov${COV}_reads.1.fq
-READSFILE2=input/${DATA_BASE}.cutAndDouble_cov${COV}_reads.2.fq
+READSFILE1=../input/${DATA_BASE}.cutAndDouble_cov${COV}_reads.1.fq
+READSFILE2=../input/${DATA_BASE}.cutAndDouble_cov${COV}_reads.2.fq
 
 VERSION="plass_${PLASS_VERSION}"
-OUTDIR="benchmark_cutAndDoubleRef/penguin_${PLASS_VERSION}_clu99/cov${COV}"
+OUTDIR="../benchmark_cutAndDoubleRef/penguin_${PLASS_VERSION}_clu99/cov${COV}"
 mkdir -p ${OUTDIR}
 
 # work locally
@@ -61,5 +61,5 @@ cp -rL ${TMP}/penguin_tmp ${OUTDIR}/
 MIN_CONTIG_LEN=1000
 mkdir -p ${OUTDIR}/mmseqs_eval_cutAndDoubleRef/dbs
 ${SOFTWARE}/MMseqs2/build/src/mmseqs createdb ${OUTDIR}/${DATA_BASE}_cov${COV}.penguin.assembly.fa ${OUTDIR}/mmseqs_eval_cutAndDoubleRef/dbs/${DATA_BASE}_cov${COV}.penguin.assembly
-evaluateResultsCutAndDoubleRef.sh ${OUTDIR}/mmseqs_eval_cutAndDoubleRef/dbs/${DATA_BASE}_cov${COV}.penguin.assembly input/genomes/HIV1.cutAndDouble input/genomes/HIV1.cutAndDouble ${OUTDIR}/mmseqs_eval_cutAndDoubleRef/ ${MIN_CONTIG_LEN} > ${OUTDIR}/mmseqs_eval_cutAndDoubleRef/mmseqs_eval.log
+../evaluation/evaluateResultsCutAndDoubleRef.sh ${OUTDIR}/mmseqs_eval_cutAndDoubleRef/dbs/${DATA_BASE}_cov${COV}.penguin.assembly ../input/genomes/HIV1.cutAndDouble ../input/genomes/HIV1.cutAndDouble ${OUTDIR}/mmseqs_eval_cutAndDoubleRef/ ${MIN_CONTIG_LEN} > ${OUTDIR}/mmseqs_eval_cutAndDoubleRef/mmseqs_eval.log
 

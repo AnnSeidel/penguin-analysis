@@ -1,9 +1,13 @@
 # penguin-analysis
 Benchmarking for PenguiN paper
 
-|--benchmarking: Includes all data and scripts used for generating the benchmark results
-|
-|--summaries:
+|--benchmarking: Includes all data and scripts used for generating the benchmark results  
+|  
+|--results: Includes all relevant assembly results as text files  
+|  
+|--notebooks: Includes jupyter notebooks for generating figures  
+|  
+|--figures: Includes paper figures  
 
 ############### BENCHMARKING ##################
 
@@ -40,4 +44,4 @@ It contains the following steps
 (4) joinAssemblyStatsistic combine statistics over all assemblers 
 (5) comparePhagesPairwise aligns complete genomes from different assembelrs (pairwise) to assess the inetrsection of the assembly sets
 
-metatranscriptomes/16S_rRNA_genes: contains teh detection and evaluation scripts for the 16s RRNA gene analysis
+metatranscriptomes/16S_rRNA_genes: contains the detection and evaluation scripts for the 16s RRNA gene analysis

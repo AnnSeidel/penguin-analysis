@@ -1,7 +1,7 @@
 #!/bin/bash
 
 BENCHMARK_DIR="../benchmark_cutAndDoubleRef"
-OUTDIR=${BENCHMARK_DIR}/compare_with_metaviralspades_penguin_clu99/
+OUTDIR=${BENCHMARK_DIR}/compare
 mkdir -p ${OUTDIR}
 
 COV=(1 10 100)

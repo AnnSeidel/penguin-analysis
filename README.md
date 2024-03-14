@@ -11,7 +11,7 @@ Benchmarking for PenguiN paper
 &nbsp;&nbsp;&nbsp;&nbsp;|  
 &nbsp;&nbsp;&nbsp;&nbsp;|--multipanels: Includes final paper figures  
 
-# Requiered Software
+# Required Software
 
 The respective software versions of the assembly tools used in the benchmark are: PenguiN (GitHub
 commit 7571d37), Megahit (v1.2.9), metaSPAdes/rnaSPAdes/metaviralSPAdes/rnaviralSPAdes

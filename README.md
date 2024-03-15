@@ -19,6 +19,8 @@ commit 7571d37), Megahit (v1.2.9), metaSPAdes/rnaSPAdes/metaviralSPAdes/rnaviral
 
 For simulating reads: randomreads.sh from the BBMAP software suite (version 38.71)
 
+For preprocessing: Trimmomatic (version 0.39), Cutadapt (version 3.3)
+
 For evaluation: MetaQUAST (version 5.0.2), MMseqs (GitHub commit efacc69)
 
 For the ssRNA detection pipeline: HMMER package (version 3.2.1), Prodigal (version 2.6.3)
@@ -40,8 +42,8 @@ HIV-mixtures/evaluation/ contains all scripts used for the precision and sensiti
 This folder includes the scripts and data for the analysis of ssRNA phages from real metatranscriptomic samples from activated sludge and aquatic environments.
 It contains the list of 82 metatranscriptomics sample identifer for the samples from activated sludge and aquatic environments, used in Callanan et a., 2020 [1] as well as our download script.
 
-preprocessData.sh describes the preprocessing steps using Trimmomatic and Cutadapt
-metatranscriptomes/assembler includes the scripts to run the assembly tools
+preprocessData.sh describes the preprocessing steps using Trimmomatic and Cutadapt  
+metatranscriptomes/assembler includes the scripts to run the assembly tools  
 metatranscriptomes/evaluation includes the scripts to detect and classify ssRNA phage contigs in the assemblies
 
 getContigsOfInterest.sh extracts all contigs >=750bp, including at least HMM protein hit 

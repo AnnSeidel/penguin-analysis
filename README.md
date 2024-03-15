@@ -11,7 +11,19 @@ Benchmarking for PenguiN paper
 &nbsp;&nbsp;&nbsp;&nbsp;|  
 &nbsp;&nbsp;&nbsp;&nbsp;|--multipanels: Includes final paper figures  
 
-############### BENCHMARKING ##################
+# Required Software
+
+The respective software versions of the assembly tools used in the benchmark are: PenguiN (GitHub
+commit 7571d37), Megahit (v1.2.9), metaSPAdes/rnaSPAdes/metaviralSPAdes/rnaviralSPAdes
+(v3.15.2), SAVAGE (v0.4.2), IVA (v1.0.8), VICUNA (v1.3), Haploflow (v0.1)
+
+For simulating reads: randomreads.sh from the BBMAP software suite (version 38.71)
+
+For evaluation: MetaQUAST (version 5.0.2), MMseqs (GitHub commit efacc69)
+
+For the ssRNA detection pipeline: HMMER package (version 3.2.1), Prodigal (version 2.6.3)
+
+# BENCHMARKING
 
 ## rhinovirus-3-mixture
 This folder includes the command line to generate the reads from the input three genomes, to run the assembly tools and subsequent metaquast for the analysis

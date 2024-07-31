@@ -19,3 +19,13 @@ ${SOFTWARE}/bbmap/randomreads.sh ref=genomes/HIV1.cutAndDouble.fa out1=HIV1.cutA
 
 ${SOFTWARE}/bbmap/randomreads.sh ref=genomes/HIV1.cutAndDouble.fa out1=HIV1.cutAndDouble_cov100_reads.1.fq out2=HIV1.cutAndDouble_cov100_reads.2.fq length=150 coverage=50 seed=26102021 paired=t mininsert=220 maxinsert=280 gaussian=f flat=t adderrors=f overlap=150 illuminanames=t addslash=t overwrite=f
 
+# make erroneous reads for cov10
+#python make_erroneous_reads.py 0.001 HIV1.cutAndDouble_cov10_reads.1.fq HIV1.cutAndDouble_cov10_err01_reads.1.fq 29072024
+#python make_erroneous_reads.py 0.001 HIV1.cutAndDouble_cov10_reads.2.fq HIV1.cutAndDouble_cov10_err01_reads.2.fq 29072025
+
+#python make_erroneous_reads.py 0.0001 HIV1.cutAndDouble_cov10_reads.1.fq HIV1.cutAndDouble_cov10_err001_reads.1.fq 29072024
+#python make_erroneous_reads.py 0.0001 HIV1.cutAndDouble_cov10_reads.2.fq HIV1.cutAndDouble_cov10_err001_reads.2.fq 29072025
+
+#python make_erroneous_reads.py 0.00001 HIV1.cutAndDouble_cov10_reads.1.fq HIV1.cutAndDouble_cov10_err0001_reads.1.fq 29072024
+#python make_erroneous_reads.py 0.00001 HIV1.cutAndDouble_cov10_reads.2.fq HIV1.cutAndDouble_cov10_err0001_reads.2.fq 29072024
+
